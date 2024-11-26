@@ -23,11 +23,8 @@ export default function HomePage(props: Pageprops) {
       <ul>
         {props.movies.map((movie) => (
           <li key={movie.id}>
-            {movie.title} 
-            <Image src={movie.coverImage} alt={movie.title} width={500} height={500}/>
+            <MovieCard movie={movie} />
           </li>
-          
-   
         ))}
       </ul>
     </div>
