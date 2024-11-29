@@ -1,4 +1,3 @@
-// pages/movies/[slug].tsx
 import { GetServerSideProps } from 'next';
 import { MovieData } from '@/star-wars-movies';
 import Image from 'next/image';
