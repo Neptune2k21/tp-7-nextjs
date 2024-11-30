@@ -12,7 +12,6 @@ export const getServerSideProps = async (ctx: any) => {
     (module) => module.MOVIES
   );
 
-
   const orderBy = ctx.query.orderBy || 'chrono';
   const sortedMovies =
     orderBy === 'date'
@@ -22,37 +21,39 @@ export const getServerSideProps = async (ctx: any) => {
   return {
     props: {
       movies: sortedMovies,
-      order: orderBy,  
+      order: orderBy,
     },
   };
 };
 
 export default function HomePage({ movies, order }: PageProps) {
   return (
-    <div>
-      <h1>Exercice 1 : Listing des films</h1>
-      <div style={{ marginBottom: '20px' }}>
+    <div className="p-6 font-sans">
+      <h1 className="text-2xl font-bold text-center mb-6">Exercice 1 : Listing des films</h1>
+      <div className="flex justify-center gap-4 mb-6">
         <Link
           href="/?orderBy=chrono"
-          style={{
-            marginRight: '10px',
-            textDecoration: order === 'chrono' ? 'underline' : 'none',  
-          }}
+          className={`font-bold transition-colors ${
+            order === 'chrono' ? 'underline text-blue-600' : 'text-blue-400'
+          }`}
         >
           Ordre Chronologique
         </Link>
         <Link
           href="/?orderBy=date"
-          style={{
-            textDecoration: order === 'date' ? 'underline' : 'none',  
-          }}
+          className={`font-bold transition-colors ${
+            order === 'date' ? 'underline text-blue-600' : 'text-blue-400'
+          }`}
         >
           Date de Parution
         </Link>
       </div>
-      <ul>
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {movies.map((movie) => (
-          <li key={movie.id}>
+          <li
+            key={movie.id}
+            className="bg-gray-100 border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform"
+          >
             <MovieCard movie={movie} />
           </li>
         ))}
