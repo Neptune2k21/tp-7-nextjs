@@ -30,7 +30,7 @@ export default function HomePage({ movies, order }: PageProps) {
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
       <h1 className="text-3xl font-semibold text-center mb-8 text-gray-900">
-        Liste des Films Star Wars
+      Exercice 1 : Listing des films
       </h1>
       <div className="flex justify-center gap-6 mb-8">
         <Link
